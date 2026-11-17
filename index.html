@@ -3,56 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#172d29">
 <title>Plan Treningowy</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 0 16px;
-        background-color: #f5f5f5;
-        color: #333;
-    }
-    h1, h2 {
-        text-align: center;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    th {
-        background: #2c3e50;
-        color: white;
-        padding: 12px;
-        text-align: center;
-    }
-    td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: center;
-        vertical-align: middle;
-    }
-    tr:nth-child(even) {
-        background: #f9f9f9;
-    }
-    .rest {
-        color: green;
-        font-weight: bold;
-    }
-</style>
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.mjs"></script>
 </head>
 <body>
 
+<header>
+<p class="eyebrow">TWÓJ RYTM. TWÓJ POSTĘP.</p>
 <h1>Plan Treningowy</h1>
+<p>Nie musisz mieć idealnego tygodnia. Zrób swój następny krok.</p>
+</header>
 
-<table>
+<main>
+<noscript><p class="notice">Plan jest dostępny poniżej. Włącz JavaScript, aby zapisywać treningi.</p></noscript>
+<p id="feedback" role="status" aria-live="polite"></p>
+<p id="error" class="notice error" role="alert" hidden></p>
+
+<section id="tracker" hidden>
+    <section id="today" class="today-card" aria-labelledby="today-heading"></section>
+
+    <section class="week-card" aria-labelledby="week-heading">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">MAŁE KROKI SIĘ SUMUJĄ</p>
+                <h2 id="week-heading">Twój tydzień</h2>
+            </div>
+            <button id="current-week" type="button" class="secondary">Bieżący tydzień</button>
+        </div>
+        <nav class="week-navigation" aria-label="Wybór tygodnia">
+            <button id="previous-week" type="button" class="secondary" aria-label="Poprzedni tydzień">←</button>
+            <p id="week-label"></p>
+            <button id="next-week" type="button" class="secondary" aria-label="Następny tydzień">→</button>
+        </nav>
+        <label id="progress-label" for="week-progress"></label>
+        <progress id="week-progress" max="6" value="0"></progress>
+        <p id="week-detail" class="muted"></p>
+    </section>
+</section>
+
+<section aria-labelledby="plan-heading">
+<h2 id="plan-heading">Plan na cały tydzień</h2>
+<table id="plan">
     <thead>
         <tr>
-            <th>Dzień</th>
-            <th>Typ treningu</th>
-            <th>Ćwiczenia</th>
+            <th scope="col">Dzień</th>
+            <th scope="col">Typ treningu</th>
+            <th scope="col">Ćwiczenia</th>
         </tr>
     </thead>
     <tbody>
@@ -130,12 +128,14 @@
 
     </tbody>
 </table>
+</section>
 
-<br>
-
+<section aria-labelledby="progression-heading">
+<details>
+<summary id="progression-heading">Jak zwiększać ciężar?</summary>
 <h2>Zasada progresji</h2>
 
-<table>
+<table id="progression">
     <thead>
         <tr>
             <th>Zakres</th>
@@ -161,6 +161,24 @@
         </tr>
     </tbody>
 </table>
+</details>
+</section>
+
+<section id="backup" class="backup-card" aria-labelledby="backup-heading" hidden>
+    <h2 id="backup-heading">Twoje dane, Twój spokój</h2>
+    <p>Historia zostaje tylko w tej przeglądarce. Nie synchronizuje się między urządzeniami.
+    Wyczyszczenie danych witryny może ją usunąć. Warto co jakiś czas pobrać kopię.</p>
+    <p class="muted">Safari i skrót z ekranu początkowego mogą mieć osobne dane.
+    Ta wersja wymaga internetu do ponownego otwarcia strony.</p>
+    <div class="backup-actions">
+        <button id="export" type="button" class="secondary">Pobierz kopię danych</button>
+        <label class="file-label" for="import">Wczytaj kopię JSON</label>
+        <input id="import" type="file" accept=".json,application/json">
+    </div>
+    <p class="muted">Wczytanie kopii zastępuje całą obecną historię po potwierdzeniu.</p>
+</section>
+</main>
+<footer>Regularność, nie perfekcja. Odpoczynek też jest częścią planu.</footer>
 
 </body>
 </html>
