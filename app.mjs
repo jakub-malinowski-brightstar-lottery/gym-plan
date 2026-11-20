@@ -1,5 +1,5 @@
 import { dateKey, parseDate, dayIndex } from "./tracker.mjs";
-import { RESULTS_KEY, exercises, emptyResult, validateResults, setExerciseResult, previousResult } from "./results.mjs";
+import { RESULTS_KEY, exercises, emptyResult, validateResults, setExerciseResult, previousResult } from "./results.mjs?v=20261120-1";
 
 const $ = id => document.getElementById(id);
 const planRows = [...document.querySelectorAll("#plan tbody tr")];

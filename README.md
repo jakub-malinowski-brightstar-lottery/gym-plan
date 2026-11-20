@@ -229,6 +229,13 @@ python -m http.server 8765 --bind 127.0.0.1
 Otwórz `http://127.0.0.1:8765`. GitHub Pages publikuje stronę z katalogu głównego
 gałęzi `main`.
 
+GitHub Pages może buforować zasoby przez 10 minut. Przy publikacji zmian JS/CSS
+aktualizuj parametr `v` w adresach zmienionych zasobów: w `index.html` oraz
+w importach modułów. Dzięki nowemu adresowi Safari pobierze nową wersję pliku.
+Jeśli telefon nadal pokazuje starą stronę, otwórz adres witryny z nowym parametrem,
+np. `?v=20261120-1`, aby odświeżyć również dokument HTML.
+Nie usuwaj danych witryny w celu odświeżenia — usunęłoby to lokalne wyniki.
+
 Testy logiki wyników, historii i dat (Node.js 22 lub nowszy):
 
 ```powershell
