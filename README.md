@@ -14,14 +14,32 @@ na idealną serię.
 - Mobilna karta „Dzisiaj” i tygodniowy plan w formie kart na telefonie.
 - Rozwijana rozgrzewka tylko w karcie „Dzisiaj”: stały schemat na pon./śr./pt.
   przed marszobiegiem i na wt./czw./sob. przed siłą; w niedzielę bez rozgrzewki.
+- Automatyczny zapis wyników ćwiczeń w karcie „Dzisiaj” i podgląd wyłącznie
+  ostatniego wcześniejszego wyniku tego samego ćwiczenia, niezależnie od dnia tygodnia.
 
 Na głównym ekranie są karta „Dzisiaj” i plan tygodnia bez kontrolek historii.
 Pod planem zostaje tylko rozwijana sekcja „Jak zwiększać ciężar?”.
 Przegląd historii oraz eksport i import kopii zostały usunięte z aplikacji.
-Karta „Dzisiaj” pokazuje datę, ćwiczenia i domyślnie zwiniętą rozgrzewkę,
+Nagłówek strony zawiera tylko tytuł „Plan Treningowy”.
+Karta „Dzisiaj” pokazuje datę w jednej linii z dniem tygodnia,
+ćwiczenia i domyślnie zwiniętą rozgrzewkę,
 bez odhaczania i wyboru statusu. Plan tygodnia nie zawiera opisów rozgrzewek.
-Aplikacja nie odczytuje ani nie zapisuje już treningów.
-Istniejące wpisy w pamięci przeglądarki nie są usuwane.
+Aplikacja nie odczytuje ani nie zapisuje statusów ukończenia treningów.
+Istniejące wpisy starej historii w pamięci przeglądarki nie są usuwane.
+
+### Wyniki ćwiczeń
+
+- Marszobieg: dowolny opis do 2000 znaków.
+- Ćwiczenia siłowe: liczba serii, wspólna liczba powtórzeń na serię i ciężar w kg
+  (także zero, gdy nie ma dodatkowego obciążenia).
+- Plank i Wall Sit: liczba serii i wspólny czas na serię w sekundach.
+- Zapis następuje po zmianie i opuszczeniu pola. Można uzupełniać wynik częściowo,
+  poprawiać go w bieżącym dniu albo wyczyścić wszystkie pola, aby usunąć dzisiejszy wynik.
+- Dzisiejsze pola są odtwarzane po odświeżeniu; poprzedni wynik nie wypełnia ich automatycznie.
+  W niedzielę nie ma pól wyników.
+- Wyniki są lokalne dla tej przeglądarki, bez synchronizacji i eksportu.
+  Wyczyszczenie danych witryny usuwa wyniki. Błędy pamięci są wyświetlane jawnie;
+  uszkodzonych danych aplikacja nie nadpisuje.
 
 Pierwotny zakres etapu 1 został uproszczony zgodnie z opisem powyżej.
 Poniższa roadmapa opisuje pomysły i pierwotne założenia,
@@ -211,15 +229,17 @@ python -m http.server 8765 --bind 127.0.0.1
 Otwórz `http://127.0.0.1:8765`. GitHub Pages publikuje stronę z katalogu głównego
 gałęzi `main`.
 
-Testy logiki historii i dat (Node.js 22 lub nowszy):
+Testy logiki wyników, historii i dat (Node.js 22 lub nowszy):
 
 ```powershell
 $env:TZ = 'Europe/Warsaw'
-node --test tracker.test.mjs
+node --test tracker.test.mjs results.test.mjs
 ```
 
 Przed publikacją sprawdź też w przeglądarce: dzisiejszą datę i ćwiczenia, wyróżnienie
 bieżącego dnia w planie, zmianę dnia oraz rozwijanie zasad progresji.
+Sprawdź zapis i poprawianie wyników, odświeżenie strony, ostatni wcześniejszy
+wynik, wyczyszczenie pól oraz komunikaty przy niedostępnej lub uszkodzonej pamięci.
 Obsługę iOS po zmianach należy potwierdzić na fizycznym urządzeniu; emulacja
 szerokości ekranu nie zastępuje testu Safari.
 
