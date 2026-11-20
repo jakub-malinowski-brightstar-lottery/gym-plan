@@ -17,30 +17,10 @@
 </header>
 
 <main>
-<noscript><p class="notice">Plan jest dostępny poniżej. Włącz JavaScript, aby zapisywać treningi.</p></noscript>
-<p id="feedback" role="status" aria-live="polite"></p>
-<p id="error" class="notice error" role="alert" hidden></p>
+<noscript><p class="notice">Plan jest dostępny poniżej. Włącz JavaScript, aby zobaczyć kartę dzisiejszego treningu.</p></noscript>
 
 <section id="tracker" hidden>
     <section id="today" class="today-card" aria-labelledby="today-heading"></section>
-
-    <section class="week-card" aria-labelledby="week-heading">
-        <div class="section-heading">
-            <div>
-                <p class="eyebrow">MAŁE KROKI SIĘ SUMUJĄ</p>
-                <h2 id="week-heading">Twój tydzień</h2>
-            </div>
-            <button id="current-week" type="button" class="secondary">Bieżący tydzień</button>
-        </div>
-        <nav class="week-navigation" aria-label="Wybór tygodnia">
-            <button id="previous-week" type="button" class="secondary" aria-label="Poprzedni tydzień">←</button>
-            <p id="week-label"></p>
-            <button id="next-week" type="button" class="secondary" aria-label="Następny tydzień">→</button>
-        </nav>
-        <label id="progress-label" for="week-progress"></label>
-        <progress id="week-progress" max="6" value="0"></progress>
-        <p id="week-detail" class="muted"></p>
-    </section>
 </section>
 
 <section aria-labelledby="plan-heading">
@@ -164,19 +144,6 @@
 </details>
 </section>
 
-<section id="backup" class="backup-card" aria-labelledby="backup-heading" hidden>
-    <h2 id="backup-heading">Twoje dane, Twój spokój</h2>
-    <p>Historia zostaje tylko w tej przeglądarce. Nie synchronizuje się między urządzeniami.
-    Wyczyszczenie danych witryny może ją usunąć. Warto co jakiś czas pobrać kopię.</p>
-    <p class="muted">Safari i skrót z ekranu początkowego mogą mieć osobne dane.
-    Ta wersja wymaga internetu do ponownego otwarcia strony.</p>
-    <div class="backup-actions">
-        <button id="export" type="button" class="secondary">Pobierz kopię danych</button>
-        <label class="file-label" for="import">Wczytaj kopię JSON</label>
-        <input id="import" type="file" accept=".json,application/json">
-    </div>
-    <p class="muted">Wczytanie kopii zastępuje całą obecną historię po potwierdzeniu.</p>
-</section>
 </main>
 <footer>Regularność, nie perfekcja. Odpoczynek też jest częścią planu.</footer>
 

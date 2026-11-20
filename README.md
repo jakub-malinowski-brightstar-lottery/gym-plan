@@ -12,11 +12,19 @@ na idealną serię.
 - Tabela zasad progresji ciężaru.
 - Statyczna strona na GitHub Pages, otwierana również na iOS.
 - Mobilna karta „Dzisiaj” i tygodniowy plan w formie kart na telefonie.
-- Zapis pełnych, częściowych i pominiętych treningów oraz cofanie wpisu.
-- Pasek tygodnia, przegląd poprzednich tygodni i historia w pamięci przeglądarki.
-- Eksport i import kopii JSON z walidacją i potwierdzeniem zastąpienia danych.
+- Rozwijana rozgrzewka tylko w karcie „Dzisiaj”: stały schemat na pon./śr./pt.
+  przed marszobiegiem i na wt./czw./sob. przed siłą; w niedzielę bez rozgrzewki.
 
-Etap 1 jest wdrożony. Pozostałe pomysły poniżej to kierunki dalszego rozwoju,
+Na głównym ekranie są karta „Dzisiaj” i plan tygodnia bez kontrolek historii.
+Pod planem zostaje tylko rozwijana sekcja „Jak zwiększać ciężar?”.
+Przegląd historii oraz eksport i import kopii zostały usunięte z aplikacji.
+Karta „Dzisiaj” pokazuje datę, ćwiczenia i domyślnie zwiniętą rozgrzewkę,
+bez odhaczania i wyboru statusu. Plan tygodnia nie zawiera opisów rozgrzewek.
+Aplikacja nie odczytuje ani nie zapisuje już treningów.
+Istniejące wpisy w pamięci przeglądarki nie są usuwane.
+
+Pierwotny zakres etapu 1 został uproszczony zgodnie z opisem powyżej.
+Poniższa roadmapa opisuje pomysły i pierwotne założenia,
 nie gotowe możliwości strony.
 
 ## Zasady projektowania
@@ -210,9 +218,8 @@ $env:TZ = 'Europe/Warsaw'
 node --test tracker.test.mjs
 ```
 
-Przed publikacją sprawdź też w przeglądarce: zapis i odświeżenie strony, cofanie,
-poprzedni tydzień, import poprawny i błędny, anulowanie importu oraz komunikat przy
-zablokowanej pamięci. Na iPhonie sprawdź dodatkowo pobieranie kopii do aplikacji Pliki.
+Przed publikacją sprawdź też w przeglądarce: dzisiejszą datę i ćwiczenia, wyróżnienie
+bieżącego dnia w planie, zmianę dnia oraz rozwijanie zasad progresji.
 Obsługę iOS po zmianach należy potwierdzić na fizycznym urządzeniu; emulacja
 szerokości ekranu nie zastępuje testu Safari.
 
